@@ -72,7 +72,7 @@ export default function SignUp() {
 
             // if complete verification
             if (completeSignup.status === 'complete') {
-                await setActive(completeSignup.createdSessionId)
+                await setActive({session: completeSignup.createdSessionId})
                 setSuccess(true)
                 router.push("/dashboard")
             }
