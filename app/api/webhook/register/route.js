@@ -9,19 +9,10 @@ export async function POST(req) {
         throw new Error("Please add webhook sceret");
     }
 
-    // const headerPayload = await headers()
-    // const svix_id = headerPayload.get("svix-id")
-    // const svix_timestamp = headerPayload.get("svix-timestamp")
-    // const svix_signature = headerPayload.get("svix-signature")
     const headerPayload = req.headers;
-    console.log(headerPayload)
-    const svix_id = headerPayload["svix-id"];
-    const svix_timestamp = headerPayload["svix-timestamp"];
-    const svix_signature = headerPayload["svix-signature"];
-
-    console.log("svix-id:", svix_id); 
-    console.log("svix-timestamp:", svix_timestamp);
-    console.log("svix-signature:", svix_signature);
+    const svix_id = headerPayload.get("svix-id");
+    const svix_timestamp = headerPayload.get("svix-timestamp");
+    const svix_signature = headerPayload.get("svix-signature");
 
     if (!svix_id || !svix_timestamp || !svix_signature) {
         return new Response("Error: No svix header")
